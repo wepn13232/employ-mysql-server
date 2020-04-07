@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
 });
 
 /* get student */
-router.get('/getStuInfoByStuNo/:stuNo', function (req, res) {
+router.get('/getByStuNo/:stuNo', function (req, res) {
     var stuNo = req.params.stuNo;
     console.log('get student called, stuNo: ' + stuNo);
     studentDAO.getByStuNo(stuNo, function (student) {
@@ -43,7 +43,7 @@ router.post('/', function (req, res) {
 });
 
 /* update students */
-router.put('/updateStuInfoByStuNo/:stuNo', function (req, res) {
+router.put('/updateByStuNo/:stuNo', function (req, res) {
     console.log('update students called');
     var student = req.body;
     student.stuNo = req.params.stuNo;

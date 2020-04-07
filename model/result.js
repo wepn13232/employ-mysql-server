@@ -15,9 +15,8 @@ exports.createResult = function (type, success, results) {
                 result.message = '数据不存在!'
         }
     } else if (type == 'post') {
-        if (data.length === 0) {
-            result.status = '401',
-                result.message = '账户或者密码有误!'
+        if(success){
+            result.message ='添加成功！'
         }
     } else if (type == 'put') {
         result.message = '修改成功!'

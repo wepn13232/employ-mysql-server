@@ -5,11 +5,8 @@ var pool = mysql.createPool(mysqlConf.mysql);
 
 module.exports = {
     add: function (employ, callback) {
-        pool.query(employSqlMap.add, [employ.employId, employ.stuNo, employ.unitName, employ.unifieSocialCreditCode, employ.jobName, employ.pay, employ.contractTime, employ.workPlace, employ.unitContactor, employ.unitTel, 1], function (error, result) {
+        pool.query(employSqlMap.add, [employ.stuNo, employ.unitName, employ.unifieSocialCreditCode, employ.jobName, employ.pay, employ.contractTime, employ.workPlace, employ.unitContactor, employ.unitTel, 1], function (error, result) {
             if (error) throw error;
-            // console.log("++++++++++cl")
-            // console.log(result)
-            // console.log("==========")
             callback(result.affectedRows > 0);
         });
     },

@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
 });
 
 /* get employ */
-router.get('/getEmployInfoByStuNo/:stuNo', function (req, res) {
+router.get('/getByStuNo/:stuNo', function (req, res) {
     var stuNo = req.params.stuNo;
     console.log('get employ called, stuNo: ' + stuNo);
     employDAO.getByStuNo(stuNo, function (employ) {
