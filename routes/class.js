@@ -13,20 +13,28 @@ router.get('/', function (req, res) {
 });
 
 /* get class */
-router.get('/getclassInfoByStuNo/:stuNo', function (req, res) {
-    var stuNo = req.params.stuNo;
-    console.log('get class called, stuNo: ' + stuNo);
-    classDAO.getByStuNo(stuNo, function (classList) {
+router.get('/getByid/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('get class called, id: ' + id);
+    classDAO.getByStuNo(id, function (classList) {
+        res.json(result.createResult('get',true, classList));
+    });
+});
+/* get class by getByCounselorNo*/
+router.get('/getByCounselorNo/:counselorNo', function (req, res) {
+    var counselorNo = req.params.counselorNo;
+    console.log('get class called, counselorNo: ' + counselorNo);
+    classDAO.getByCounselorNo(counselorNo, function (classList) {
         res.json(result.createResult('get',true, classList));
     });
 });
 
 
 /* delete class */
-router.delete('/:stuNo', function (req, res) {
-    var stuNo = req.params.stuNo;
-    console.log('delete class called, stuNo=' + stuNo);
-    classDAO.deleteByStuNo(stuNo, function (success) {
+router.delete('/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('delete class called, id=' + id);
+    classDAO.deleteById(id, function (success) {
         res.json(result.createResult('delete',success, null));
     });
 });
@@ -43,7 +51,7 @@ router.post('/', function (req, res) {
 });
 
 /* update class */
-router.put('/updateclassInfoById/:id', function (req, res) {
+router.put('/updateById/:id', function (req, res) {
     console.log('update class called');
     var classParam = req.body;
     classParam.id = req.params.id;

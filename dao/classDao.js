@@ -7,9 +7,6 @@ module.exports = {
     add: function (classParam, callback) {
         pool.query(classSqlMap.add, [classParam.classNo,classParam.counselorNo,classParam.className,classParam.professionNo,classParam.professionName,classParam.classNum,classParam.employNum,classParam.monitor,classParam.monitorTel], function (error, result) {
             if (error) throw error;
-            // console.log("++++++++++cl")
-            // console.log(result)
-            // console.log("==========")
             callback(result.affectedRows > 0);
         });
     },
@@ -19,12 +16,18 @@ module.exports = {
             callback(result);
         });
     },
-    getByStuNo: function (stuNO, callback) {
-        pool.query(classSqlMap.getByStuNo, stuNO, function (error, result) {
+    getById: function (id, callback) {
+        pool.query(classSqlMap.getById, id, function (error, result) {
             if (error) throw error;
             console.log(result[0]);
             callback(result[0]);
         });
+    },
+    getByCounselorNo: function(counselorNo,callback){
+        pool.query(classSqlMap.getByCounselorNo,counselorNo,function(error,result){
+            if(error) throw error;
+            callback(result)
+        })
     },
     deleteById: function (id, callback) {
         pool.query(classSqlMap.deleteById, id, function (error, result) {
@@ -34,7 +37,7 @@ module.exports = {
     },
     update: function (classParam, callback) {
         console.log(classParam)
-        pool.query(classSqlMap.update, [], function (error, result) {
+        pool.query(classSqlMap.update, [classParam.classNo,classParam.counselorNo,classParam.className,classParam.professionNo,classParam.professionName,classParam.classNum,classParam.employNum,classParam.monitor,classParam.monitorTel,classParam.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });

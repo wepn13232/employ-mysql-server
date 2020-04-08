@@ -43,7 +43,7 @@ router.post('/', function (req, res) {
 });
 
 /* update employ */
-router.put('/updateEmployInfoById/:id', function (req, res) {
+router.put('/updateById/:id', function (req, res) {
     console.log('update employ called');
     var employ = req.body;
     employ.id = req.params.id;

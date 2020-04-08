@@ -10,6 +10,7 @@ var students = require('./routes/students');
 var employ = require('./routes/employ');
 var counselor = require('./routes/counselor');
 var class_route = require('./routes/class');
+var employStatistics = require('./routes/employStatistics');
 var app = express();
 
 // uncomment after placing your favicon in /public
@@ -26,7 +27,7 @@ app.use('/employMent/stuInfo',students);
 app.use('/employMent/employInfo',employ);
 app.use('/employMent/counselorInfo',counselor);
 app.use('/employMent/classInfo',class_route);
-
+app.use('/employMent/employStatistics',employStatistics);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
