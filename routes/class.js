@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 router.get('/getByid/:id', function (req, res) {
     var id = req.params.id;
     console.log('get class called, id: ' + id);
-    classDAO.getByStuNo(id, function (classList) {
+    classDAO.getById(id, function (classList) {
         res.json(result.createResult('get',true, classList));
     });
 });

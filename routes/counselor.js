@@ -36,7 +36,7 @@ router.delete('/:counselorNo', function (req, res) {
 router.post('/', function (req, res) {
     console.log('post counselors called');
     var counselor = req.body;
-    console.log(counselor);
+    // console.log(counselor);
     counselorDAO.add(counselor, function (success) {
         var r = result.createResult('post',success, null);
         res.json(r);

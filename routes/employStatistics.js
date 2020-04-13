@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     console.log('list employStatistics called');
     employStatisticsDAO.list(function (employStatistics) {
         res.json(result.createResult('get',true, employStatistics));
-        console.log(res)
+        // console.log(res)
     });
 });
 
@@ -35,7 +35,7 @@ router.delete('/:stuNo', function (req, res) {
 router.post('/', function (req, res) {
     console.log('post employStatistics called');
     var employStatistics = req.body;
-    console.log(employStatistics);
+    // console.log(employStatistics);
     employStatisticsDAO.add(employStatistics, function (success) {
         var r = result.createResult('post',success, null);
         res.json(r);

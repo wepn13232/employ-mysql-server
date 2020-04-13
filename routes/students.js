@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     console.log('list students called');
     studentDAO.list(function (students) {
         res.json(result.createResult('get',true, students));
-        console.log(res)
+        // console.log(res)
     });
 });
 
