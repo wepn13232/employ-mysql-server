@@ -13,6 +13,8 @@ var class_route = require('./routes/class');
 var employStatistics = require('./routes/employStatistics');
 var careerGuidance = require('./routes/careerGuidance');
 var recruitment = require('./routes/recruitment');
+var employRepresent = require('./routes/employRepresent');
+
 var app = express();
 
 // uncomment after placing your favicon in /public
@@ -37,7 +39,7 @@ app.use('/employMent/classInfo', class_route);
 app.use('/employMent/employStatistics', employStatistics);
 app.use('/employMent/careerGuidance', careerGuidance);
 app.use('/employMent/recruitmentInfo', recruitment);
-
+app.use('/employMent/employRepresent', employRepresent);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');

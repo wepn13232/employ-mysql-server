@@ -4,7 +4,7 @@ var userSqlMap = {
     update: 'update userInfo set username=?, password=? where id=?',
     list: 'select * from userInfo',
     getById: 'select * from userInfo where id = ?',
-    login: 'select * from userInfo where userId=? and password=?'
+    login: 'select * from userInfo where userId=?'
 };
 
 module.exports = userSqlMap;

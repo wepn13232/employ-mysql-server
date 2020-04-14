@@ -19,7 +19,7 @@ module.exports = {
     getByStuNo: function (stuNO, callback) {
         pool.query(studentSqlMap.getByStuNo, stuNO, function (error, result) {
             if (error) throw error;
-            console.log(result[0]);
+            // console.log(result[0]);
             callback(result[0]);
         });
     },

@@ -8,12 +8,12 @@ router.get('/', function (req, res) {
     console.log('list careerGuidance called');
     careerGuidanceDAO.list(function (careerGuidanceList) {
         res.json(result.createResult('get',true, careerGuidanceList));
-        console.log(res)
+        // console.log(res)
     });
 });
 
 /* get careerGuidance */
-router.get('/getByid/:id', function (req, res) {
+router.get('/:id', function (req, res) {
     var id = req.params.id;
     console.log('get careerGuidance called, id: ' + id);
     careerGuidanceDAO.getById(id, function (careerGuidanceList) {

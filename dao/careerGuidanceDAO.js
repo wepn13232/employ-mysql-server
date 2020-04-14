@@ -36,8 +36,8 @@ module.exports = {
         });
     },
     update: function (careerGuidanceParam, callback) {
-        console.log(careerGuidanceParam)
-        pool.query(careerGuidanceSqlMap.update, [careerGuidanceParam.careerGuidanceNo,careerGuidanceParam.counselorNo,careerGuidanceParam.careerGuidanceName,careerGuidanceParam.professionNo,careerGuidanceParam.professionName,careerGuidanceParam.careerGuidanceNum,careerGuidanceParam.employNum,careerGuidanceParam.monitor,careerGuidanceParam.monitorTel,careerGuidanceParam.id], function (error, result) {
+        // console.log(careerGuidanceParam)
+        pool.query(careerGuidanceSqlMap.update, [careerGuidanceParam.counselorNo,careerGuidanceParam.guidanceTitle,careerGuidanceParam.content,careerGuidanceParam.releaseDate,careerGuidanceParam.viewNum+1,careerGuidanceParam.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });

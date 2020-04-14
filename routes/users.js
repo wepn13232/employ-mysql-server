@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var userDAO = require('../dao/userDAO');
 var result = require('../model/result');
+var crypto = require("crypto");
 
 /* list users */
 router.get('/', function (req, res) {
@@ -45,7 +46,7 @@ router.post('/login', function (req, res) {
     var userId = req.body.userId;
     var password = req.body.password;
     console.log('post user called, userId: ' + userId);
-    userDAO.login(userId, password, function (user) {
+    userDAO.login(userId, function (user) {
         if (user.length == 0) {
             res.json({
                 status: '401',
@@ -53,12 +54,16 @@ router.post('/login', function (req, res) {
                 data: []
             })
         } else {
-            delete user.password //删除密码
-            res.json({
-                status: '200',
-                message: '登陆成功!',
-                data: user
-            });
+            var key = "ILOVEKUANGMINYI";
+            var save_password = aesDecrypt(user[0].password, key);
+            if (save_password == aesDecrypt(password, key)) {
+                delete user[0].password //删除密码
+                res.json({
+                    status: '200',
+                    message: '登陆成功!',
+                    data: user[0]
+                });
+            }
         }
     });
 });
@@ -96,3 +101,10 @@ router.patch('/:id', function (req, res) {
 });
 
 module.exports = router;
+
+function aesDecrypt(encrypted, key) {
+    const decipher = crypto.createDecipher('aes192', key);
+    var decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
+}

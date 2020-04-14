@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     console.log('list recruitment called');
     recruitmentDAO.list(function (recruitmentList) {
         res.json(result.createResult('get',true, recruitmentList));
-        console.log(res)
+        // console.log(res)
     });
 });
 

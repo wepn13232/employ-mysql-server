@@ -19,7 +19,7 @@ module.exports = {
     getByClassNo: function (classNo, callback) {
         pool.query(employStatisticsSqlMap.getByClassNo, classNo, function (error, result) {
             if (error) throw error;
-            console.log(result);
+            // console.log(result);
             callback(result);
         });
     },

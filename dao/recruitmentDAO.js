@@ -19,7 +19,7 @@ module.exports = {
     getById: function (id, callback) {
         pool.query(recruitmentSqlMap.getById, id, function (error, result) {
             if (error) throw error;
-            console.log(result[0]);
+            // console.log(result[0]);
             callback(result[0]);
         });
     },
