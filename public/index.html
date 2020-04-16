@@ -42,13 +42,13 @@
 <table align="center" border="1" ng-controller="listCtrl">
     <tr>
         <th>ID</th>
-        <th>username</th>
+        <th>userName</th>
         <th>password</th>
         <th>manage</th>
     </tr>
     <tr ng-repeat="user in users">
         <td>{{user.id}}</td>
-        <td><a href="/detail.html?id={{user.id}}">{{user.username}}</a></td>
+        <td><a href="/detail.html?id={{user.id}}">{{user.userName}}</a></td>
         <td><input ng-value="user.password" id="pwd{{user.id}}" ng-blur="doPatch(user.id)"/></td>
         <td><a href="/modify.html?id={{user.id}}">modify</a> <a href="javascript:void(0)" ng-click="doDel(user)">DEL</a>
         </td>

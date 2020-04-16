@@ -4,7 +4,7 @@ var userSqlMap = require('./userSqlMap');
 var pool = mysql.createPool(mysqlConf.mysql);
 module.exports = {
     add: function (user, callback) {
-        pool.query(userSqlMap.add, [user.username, user.password], function (error, result) {
+        pool.query(userSqlMap.add, [user.userId, user.userName, user.userType, user.password], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
@@ -15,10 +15,11 @@ module.exports = {
             callback(result);
         });
     },
-    getById: function (id, callback) {
-        pool.query(userSqlMap.getById, id, function (error, result) {
+    getByUserId: function (userId, callback) {
+        pool.query(userSqlMap.getByUserId, userId, function (error, result) {
             if (error) throw error;
-            callback(result[0]);
+            console.log(result)
+            callback(result);
         });
     },
     deleteById: function (id, callback) {
@@ -28,7 +29,7 @@ module.exports = {
         });
     },
     update: function (user, callback) {
-        pool.query(userSqlMap.update, [user.username, user.password, user.id], function (error, result) {
+        pool.query(userSqlMap.update, [user.userName, user.password, user.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });

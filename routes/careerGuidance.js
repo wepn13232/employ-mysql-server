@@ -25,7 +25,7 @@ router.get('/getByCounselorNo/:counselorNo', function (req, res) {
     var counselorNo = req.params.counselorNo;
     console.log('get careerGuidance called, counselorNo: ' + counselorNo);
     careerGuidanceDAO.getByCounselorNo(counselorNo, function (careerGuidanceList) {
-        console.log(careerGuidanceList)
+        // console.log(careerGuidanceList)
         res.json(result.createResult('get',true, careerGuidanceList));
     });
 });
@@ -44,7 +44,7 @@ router.delete('/:id', function (req, res) {
 router.post('/', function (req, res) {
     console.log('post careerGuidance called');
     var careerGuidanceParam = req.body;
-    console.log(careerGuidanceParam);
+    // console.log(careerGuidanceParam);
     careerGuidanceDAO.add(careerGuidanceParam, function (success) {
         var r = result.createResult('post',success, null);
         res.json(r);
@@ -74,7 +74,7 @@ router.patch('/:id', function (req, res) {
         if (password) {
             careerGuidanceList.password = password;
         }
-        console.log(careerGuidanceList);
+        // console.log(careerGuidanceList);
         careerGuidanceDAO.update(careerGuidanceList, function (success) {
             var r = result.createResult('patch',success, null);
             res.json(r);

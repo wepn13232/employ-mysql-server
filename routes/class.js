@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var classDAO = require('../dao/classDAO');
+var manageBaseDao = require('../dao/manageBaseDao')
 var result = require('../model/result');
 
 /* list class */
@@ -43,11 +44,25 @@ router.delete('/:id', function (req, res) {
 router.post('/', function (req, res) {
     console.log('post class called');
     var classParam = req.body;
-    console.log(classParam);
-    classDAO.add(classParam, function (success) {
-        var r = result.createResult('post',success, null);
-        res.json(r);
-    });
+    // console.log(classParam);
+    classDAO.getByClassNo(classParam.classNo,function(classList){
+        if(classList.length == 0){
+            classDAO.add(classParam, function (success) {
+                manageBaseDao.updateLeadClass(classParam.counselorNo)
+                var r = result.createResult('post',success, null);
+                res.json(r);
+            });
+        }else{
+            res.json(
+                {
+                    status: '401',
+                    message: "班级数据已存在",
+                    data:[]
+                }
+            );
+        }
+    })
+    
 });
 
 /* update class */

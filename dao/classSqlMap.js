@@ -4,7 +4,8 @@ var classSqlMap = {
     update: 'update classInfo set classNo=?,counselorNo=?,className=?,professionNo=?,professionName=?,classNum=?,employNum=?,monitor=?,monitorTel=? where id =?',
     list: 'select * from classInfo',
     getById: 'select * from classInfo where id = ?',
-    getByCounselorNo: 'select * from classInfo where counselorNo =?'
+    getByCounselorNo: 'select * from classInfo where counselorNo =?',
+    getByClassNo:'select * from classInfo where classNo =?'
 };
 
 module.exports = classSqlMap;

@@ -14,14 +14,14 @@
                     var id = $location.search().id;
                     $http.get('/users/' + id).then(function (response) {
                         var user = response.data.data;
-                        $scope.username = user.username;
+                        $scope.userName = user.userName;
                         $scope.password = user.password;
                     }, function (err) {
                         alert(err);
                     });
                     $scope.doModify = function () {
                         var data = JSON.stringify({
-                            username: $scope.username,
+                            userName: $scope.userName,
                             password: $scope.password
                         });
                         $http.put("/users/" + id, data)
@@ -41,8 +41,8 @@
 </div>
 <table align="center" border="1">
     <tr>
-        <td><label for="username">username:</label></td>
-        <td><input id="username" ng-model="username"/></td>
+        <td><label for="userName">userName:</label></td>
+        <td><input id="userName" ng-model="userName"/></td>
     </tr>
     <tr>
         <td><label for="password">password:</label></td>

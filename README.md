@@ -98,7 +98,7 @@ create database `express-mysql-demo`;
 ```sql
 CREATE TABLE `express-mysql-demo`.`user` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
+  `userName` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 DEFAULT CHARACTER SET = utf8mb4;
@@ -111,7 +111,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 | Field    | Type             | Null | Key | Default | Extra          |
 +----------+------------------+------+-----+---------+----------------+
 | id       | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-| username | varchar(45)      | NO   |     | NULL    |                |
+| userName | varchar(45)      | NO   |     | NULL    |                |
 | password | varchar(45)      | NO   |     | NULL    |                |
 +----------+------------------+------+-----+---------+----------------+
 ```
@@ -135,9 +135,9 @@ SQL语句封装模块dao/userSqlMap.js:
 
 ```js
 var userSqlMap = {
-    add: 'insert into user(username, password) values(?, ?)',
+    add: 'insert into user(userName, password) values(?, ?)',
     deleteById: 'delete from user where id = ?',
-    update: 'update user set username=?, password=? where id=?',
+    update: 'update user set userName=?, password=? where id=?',
     list: 'select * from user',
     getById: 'select * from user where id = ?'
 };
@@ -170,7 +170,7 @@ module.exports = {
             callback(result[0]);
         });
     },update: function (user, callback) {
-        pool.query(userSqlMap.update, [user.username, user.password, user.id], function (error, result) {
+        pool.query(userSqlMap.update, [user.userName, user.password, user.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
@@ -187,9 +187,9 @@ module.exports = {
 router.patch('/:id', function (req, res) {
     console.log('patch users called');
     userDAO.getById(req.params.id, function (user) {
-        var username = req.body.username;
-        if(username) {
-            user.username = username;
+        var userName = req.body.userName;
+        if(userName) {
+            user.userName = userName;
         }
         var password = req.body.password;
         if(password) {

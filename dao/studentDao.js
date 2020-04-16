@@ -31,7 +31,7 @@ module.exports = {
     },
     update: function (student, callback) {
         console.log(student)
-        pool.query(studentSqlMap.update, [student.stuNo,student.stuName,student.idCard,student.department,student.profession,student.education,student.politicalStatus,student.biogenicLand,student.graduationTime,student.stuTel,student.familyContact,student.homeTel,student.homeAddress,student.stuNo], function (error, result) {
+        pool.query(studentSqlMap.update, [student.stuNo,student.stuName,student.stuSex,student.idCard,student.department,student.profession,student.education,student.politicalStatus,student.biogenicLand,student.graduationTime,student.stuTel,student.familyContact,student.homeTel,student.homeAddress,student.stuNo], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
