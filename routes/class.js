@@ -32,10 +32,13 @@ router.get('/getByCounselorNo/:counselorNo', function (req, res) {
 
 
 /* delete class */
-router.delete('/:id', function (req, res) {
+router.delete('/:id/:counselorNo', function (req, res) {
     var id = req.params.id;
+    var counselorNo = req.params.counselorNo;
+    console.log(classParam)
     console.log('delete class called, id=' + id);
     classDAO.deleteById(id, function (success) {
+        manageBaseDao.updateLeadClass(counselorNo)//删除班级的时候同步辅导带领的班级信息
         res.json(result.createResult('delete',success, null));
     });
 });

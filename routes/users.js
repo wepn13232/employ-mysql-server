@@ -4,6 +4,9 @@ var userDao = require('../dao/userDao');
 var manageBaseDao = require('../dao/manageBaseDao')
 var result = require('../model/result');
 var crypto = require("crypto");
+var formidable=require('formidable');//上传功能的插件
+var path=require('path');
+var fs=require('fs');
 
 /* list users */
 router.get('/', function (req, res) {
@@ -86,7 +89,7 @@ router.post('/login', function (req, res) {
 router.put('/:id', function (req, res) {
     console.log('update users called');
     var user = req.body;
-    user.id = req.params.id;
+    // user = req.params;
     console.log(user);
     userDao.update(user, function (success) {
         var r = result.createResult('put', success, null);
@@ -113,6 +116,53 @@ router.patch('/:id', function (req, res) {
         });
     });
 });
+
+//上传个人头像图片
+router.post('/upload/headImage', function(req, res) {
+    var uploadDir='./public/images/';
+    var form=new formidable.IncomingForm();
+    //文件的编码格式
+    form.encoding='utf-8';
+    //文件的上传路径
+    form.uploadDir=uploadDir;
+    //文件的后缀名
+    form.extensions=true;
+    //文件的大小限制
+    form.maxFieldsSize = 2 * 1024 * 1024;
+    form.parse(req, function (err, fields, files) {
+    //fields上传的string类型的信息
+    //files为上传的文件
+       var username=fields.username;
+       var pintroduction=fields.Pintroduction;
+       var name=fields.name;
+  
+       var file=files.photo;
+  
+       var oldpath =path.normalize(file.path);//返回正确格式的路径
+  
+       var newfilename=username+file.name;
+       var newpath=uploadDir+newfilename;
+  
+       //写入数据库的信息
+      var useres={
+        pintroduction:pintroduction,
+      };
+      console.log(pintroduction)
+      //将老的图片路径改为新的图片路径
+      fs.rename(oldpath,newpath,function(err){
+        if(err){
+          console.error("改名失败"+err);
+        }
+        else {
+          useres.filePath=newpath;
+        //    user.create(useres);
+        //    res.send('注册成功')
+        }
+      });
+    })
+
+  });
+
 
 module.exports = router;
 

@@ -25,4 +25,35 @@ module.exports = {
             // callback(result.affectedRows > 0);
         });
     },
+    //添加就业统计
+    addEmployStatistics: function (stuNo) {
+        console.log("========")
+        console.log(stuNo)
+        pool.query(manageBaseSqlMap.addEmployStatistics, [stuNo,stuNo,stuNo,stuNo], function (error, result) {
+            if (error) throw error;
+            else{
+            }
+        });
+        pool.query(manageBaseSqlMap.updateEmployNum, [stuNo,stuNo], function (error, result) {
+            if (error) throw error;
+            else{
+            }
+        });
+    },
+    //更新就业数据 updateEmployStatistics
+    updateEmployStatistics: function (employ) {
+        console.log("========")
+        console.log(employ)
+        pool.query(manageBaseSqlMap.updateEmployStatistics, [employ.jobName,employ.contractTime,employ.stuNo], function (error, result) {
+            if (error) throw error;
+            else{
+            }
+        });
+        pool.query(manageBaseSqlMap.updateEmployNum, [employ.stuNo,employ.stuNo], function (error, result) {
+            if (error) throw error;
+            else{
+            }
+        });
+    },
+    
 };

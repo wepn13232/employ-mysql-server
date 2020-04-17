@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var employDAO = require('../dao/employDAO');
+var manageBaseDao = require('../dao/manageBaseDao')
 var result = require('../model/result');
 
 /* list employ */
@@ -37,6 +38,7 @@ router.post('/', function (req, res) {
     var employ = req.body;
     // console.log(employ);
     employDAO.add(employ, function (success) {
+        manageBaseDao.addEmployStatistics(employ.stuNo)//同步就业统计数据信息
         var r = result.createResult('post',success, null);
         res.json(r);
     });
@@ -48,6 +50,7 @@ router.put('/updateById/:id', function (req, res) {
     var employ = req.body;
     employ.id = req.params.id;
     employDAO.update(employ, function (success) {
+        manageBaseDao.updateEmployStatistics(employ)//同步就业统计数据信息
         var r = result.createResult('put',success, null);
         res.json(r);
     });

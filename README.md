@@ -233,8 +233,6 @@ app.use('/users', users);
         })(window);
 ```
 
-前端使用angualr.js，ajax异步调用后端restful API，然后解析后台返回的JSON对象在界面上展示。
+前端使用vue.js，ajax异步调用后端restful API，然后解析后台返回的JSON对象在界面上展示。
 
-## 许可证
-
-[Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+npm install formidable
