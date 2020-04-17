@@ -4,9 +4,9 @@ var userDao = require('../dao/userDao');
 var manageBaseDao = require('../dao/manageBaseDao')
 var result = require('../model/result');
 var crypto = require("crypto");
-var formidable=require('formidable');//上传功能的插件
-var path=require('path');
-var fs=require('fs');
+var formidable = require('formidable'); //上传功能的插件
+var path = require('path');
+var fs = require('fs');
 
 /* list users */
 router.get('/', function (req, res) {
@@ -39,24 +39,22 @@ router.delete('/:id', function (req, res) {
 router.post('/', function (req, res) {
     console.log('post users called');
     var user = req.body;
-    userDao.getByUserId(user.userId,function(userList){
-        if(userList.length == 0){
+    userDao.getByUserId(user.userId, function (userList) {
+        if (userList.length == 0) {
             userDao.add(user, function (success) {
                 // manageBaseDao.addStuInfo(user)
                 var r = result.createResult('post', success, null);
                 res.json(r);
             });
-        }else{
-            res.json(
-                {
-                    status: '401',
-                    message: "用户数据已存在",
-                    data:[]
-                }
-            );
+        } else {
+            res.json({
+                status: '401',
+                message: "用户数据已存在",
+                data: []
+            });
         }
     })
-   
+
 });
 /* post user by userId and password*/
 router.post('/login', function (req, res) {
@@ -80,6 +78,7 @@ router.post('/login', function (req, res) {
                     message: '登陆成功!',
                     data: user[0]
                 });
+                
             }
         }
     });
@@ -118,50 +117,46 @@ router.patch('/:id', function (req, res) {
 });
 
 //上传个人头像图片
-router.post('/upload/headImage', function(req, res) {
-    var uploadDir='./public/images/';
-    var form=new formidable.IncomingForm();
+router.post('/updateUserImage', function (req, res) {
+    var uploadDir = './public/images/';
+    var form = new formidable.IncomingForm();
     //文件的编码格式
-    form.encoding='utf-8';
+    form.encoding = 'utf-8';
     //文件的上传路径
-    form.uploadDir=uploadDir;
+    form.uploadDir = uploadDir;
     //文件的后缀名
-    form.extensions=true;
+    form.extensions = true;
     //文件的大小限制
     form.maxFieldsSize = 2 * 1024 * 1024;
     form.parse(req, function (err, fields, files) {
-    //fields上传的string类型的信息
-    //files为上传的文件
-       var username=fields.username;
-       var pintroduction=fields.Pintroduction;
-       var name=fields.name;
-  
-       var file=files.photo;
-  
-       var oldpath =path.normalize(file.path);//返回正确格式的路径
-  
-       var newfilename=username+file.name;
-       var newpath=uploadDir+newfilename;
-  
-       //写入数据库的信息
-      var useres={
-        pintroduction:pintroduction,
-      };
-      console.log(pintroduction)
-      //将老的图片路径改为新的图片路径
-      fs.rename(oldpath,newpath,function(err){
-        if(err){
-          console.error("改名失败"+err);
+        //fields上传的string类型的信息
+        //files为上传的文件
+        var userId = fields.userId;
+        var avatar = files.avatar;
+        var oldpath = path.normalize(avatar.path); //返回正确格式的路径
+
+        var newfilename = userId + avatar.name;
+        var newpath = uploadDir + newfilename;
+
+        //写入数据库的信息
+        var userInfo = {
+            userId: userId,
         }
-        else {
-          useres.filePath=newpath;
-        //    user.create(useres);
-        //    res.send('注册成功')
-        }
-      });
+        //将老的图片路径改为新的图片路径
+        fs.rename(oldpath, newpath, function (err) {
+            if (err) {
+                console.error("改名失败" + err);
+            } else {
+                userInfo.filePath = newpath;
+                userDao.updateImage(userInfo, function (success) {
+                    var r = result.createResult('put', success, null);
+                    res.json(r);
+                });
+            }
+        });
     })
 
-  });
+});
 
 
 module.exports = router;

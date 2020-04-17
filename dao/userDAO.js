@@ -34,6 +34,12 @@ module.exports = {
             callback(result.affectedRows > 0);
         });
     },
+    updateImage: function (user, callback) {
+        pool.query(userSqlMap.updateImage, [user.filePath, user.userId], function (error, result) {
+            if (error) throw error;
+            callback(result.affectedRows > 0);
+        });
+    },
     login: function (userId, callback) {
         pool.query(userSqlMap.login, userId, function (error, result) {
             if (error) throw error;
