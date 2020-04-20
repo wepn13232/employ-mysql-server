@@ -17,11 +17,14 @@ router.get('/', function (req, res) {
 });
 
 /* get user */
-router.get('/:id', function (req, res) {
-    var id = req.params.id;
-    console.log('get user called, id: ' + id);
-    userDao.getById(id, function (user) {
-        res.json(result.createResult('get', true, user));
+router.get('/:userId', function (req, res) {
+    var userId = req.params.userId;
+    console.log('get user called, userId: ' + userId);
+    userDao.getByUserId(userId, function (user) {
+        // console.log("===============")
+        // console.log(user[0])
+        delete user[0].password //删除密码
+        res.json(result.createResult('get', true, user[0]));
     });
 });
 
@@ -78,7 +81,7 @@ router.post('/login', function (req, res) {
                     message: '登陆成功!',
                     data: user[0]
                 });
-                
+
             }
         }
     });
@@ -118,7 +121,8 @@ router.patch('/:id', function (req, res) {
 
 //上传个人头像图片
 router.post('/updateUserImage', function (req, res) {
-    var uploadDir = './img/';
+    var uploadDir = './public/employSystem/img/';
+    var viewDir = './img/'
     var form = new formidable.IncomingForm();
     //文件的编码格式
     form.encoding = 'utf-8';
@@ -141,13 +145,14 @@ router.post('/updateUserImage', function (req, res) {
         //写入数据库的信息
         var userInfo = {
             userId: userId,
+            filePath: viewDir + newfilename
         }
         //将老的图片路径改为新的图片路径
         fs.rename(oldpath, newpath, function (err) {
             if (err) {
                 console.error("改名失败" + err);
             } else {
-                userInfo.filePath = newpath;
+                // userInfo.filePath = newpath;
                 userDao.updateImage(userInfo, function (success) {
                     var r = result.createResult('put', success, null);
                     res.json(r);
