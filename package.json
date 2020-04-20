@@ -1,5 +1,5 @@
 {
-  "name": "learn-node.js",
+  "name": "learn-node",
   "version": "0.0.0",
   "private": true,
   "config": {
@@ -18,5 +18,18 @@
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "serve-favicon": "~2.4.5"
-  }
+  },
+  "description": "基于node.js + express + mysql实现的restful风格的CRUD简单示例",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Howe94/employ-mysql-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Howe94/employ-mysql-server/issues"
+  },
+  "homepage": "https://github.com/Howe94/employ-mysql-server#readme"
 }

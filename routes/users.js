@@ -118,7 +118,7 @@ router.patch('/:id', function (req, res) {
 
 //上传个人头像图片
 router.post('/updateUserImage', function (req, res) {
-    var uploadDir = './public/images/';
+    var uploadDir = './img/';
     var form = new formidable.IncomingForm();
     //文件的编码格式
     form.encoding = 'utf-8';
