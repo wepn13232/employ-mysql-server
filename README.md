@@ -236,3 +236,7 @@ app.use('/users', users);
 前端使用vue.js，ajax异步调用后端restful API，然后解析后台返回的JSON对象在界面上展示。
 
 npm install formidable
+
+
+项目运行
+http://localhost:8888/employSystem/entering.html#/login
