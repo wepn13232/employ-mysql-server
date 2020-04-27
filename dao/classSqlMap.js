@@ -4,7 +4,7 @@ var classSqlMap = {
     update: 'update classInfo set classNo=?,counselorNo=?,className=?,professionNo=?,professionName=?,classNum=?,employNum=?,monitor=?,monitorTel=? where id =?',
     list: 'select * from classInfo',
     getById: 'select * from classInfo where id = ?',
-    getByCounselorNo: 'select * from classInfo where counselorNo =?',
+    getByCounselorNo: 'select * from classInfo c left join professionattach pa ON c.classNo = pa.classKey where counselorNo =?',
     getByClassNo:'select * from classInfo where classNo =?'
 };
 

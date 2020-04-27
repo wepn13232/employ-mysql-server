@@ -37,6 +37,7 @@ module.exports = {
         pool.query(manageBaseSqlMap.updateEmployNum, [stuNo,stuNo], function (error, result) {
             if (error) throw error;
             else{
+                console.log("更新班级就业数成功")
             }
         });
     },
@@ -47,11 +48,13 @@ module.exports = {
         pool.query(manageBaseSqlMap.updateEmployStatistics, [employ.jobName,employ.contractTime,employ.stuNo], function (error, result) {
             if (error) throw error;
             else{
+                // console.log("更新班级就业数成功")
             }
         });
         pool.query(manageBaseSqlMap.updateEmployNum, [employ.stuNo,employ.stuNo], function (error, result) {
             if (error) throw error;
             else{
+                console.log("更新班级就业数成功")
             }
         });
     },
