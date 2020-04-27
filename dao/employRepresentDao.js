@@ -37,7 +37,7 @@ module.exports = {
         });
     },
     update: function (employRepresent, callback) {
-        pool.query(employRepresentSqlMap.update, [employRepresent.styleNo, employRepresent.stuName, employRepresent.graduationYear, employRepresent.jobTitle, employRepresent.motto, employRepresent.picurl, employRepresent.id], function (error, result) {
+        pool.query(employRepresentSqlMap.update, [employRepresent.stuNo, employRepresent.stuName, employRepresent.graduationYear, employRepresent.jobTitle, employRepresent.motto, employRepresent.filePath, employRepresent.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
