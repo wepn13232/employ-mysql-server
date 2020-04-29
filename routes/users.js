@@ -10,9 +10,15 @@ var fs = require('fs');
 
 /* list users */
 router.get('/', function (req, res) {
-    console.log('list users called');
-    userDao.list(function (users) {
-        res.json(result.createResult('get', true, users));
+    var pageObj = req.query;
+    console.log('list users called',pageObj);
+    userDao.list(pageObj,function (users) {
+        pageObj.totalRow = users[1].totalRow
+        dataList = {
+            userList:users[0],
+            pageObj
+        }
+        res.json(result.createResult('get', true, dataList));
     });
 });
 

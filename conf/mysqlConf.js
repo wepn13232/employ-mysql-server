@@ -6,6 +6,7 @@ module.exports = {
         database:'employManager',
         // 最大连接数，默认为10
         connectionLimit: 10,
-        serverTimezone:'Asia/Shanghai'
+        serverTimezone:'Asia/Shanghai',
+        multipleStatements: true
     }
 };
