@@ -120,16 +120,15 @@ router.put('/:id', function (req, res) {
     var newpath = uploadDir + newfilename;
 
     //写入数据库的信息
-    var userInfo = {
-      userParams,
-      filePath: viewDir + newfilename
-    }
+    var userInfo = userParams;
+    userInfo.filePath=viewDir + newfilename
     //将老的图片路径改为新的图片路径
     fs.rename(oldpath, newpath, function (err) {
       if (err) {
         console.error("改名失败" + err);
       } else {
         // userInfo.filePath = newpath;
+        console.log(userInfo)
         userDao.update(userInfo, function (success) {
           var r = result.createResult('put', success, null);
           res.json(r);
