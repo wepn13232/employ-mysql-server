@@ -26,6 +26,7 @@ router.get('/getByCounselorNo/:counselorNo', function (req, res) {
     var counselorNo = req.params.counselorNo;
     console.log('get class called, counselorNo: ' + counselorNo);
     classDAO.getByCounselorNo(counselorNo, function (classList) {
+        console.log(classList)
         res.json(result.createResult('get',true, classList));
     });
 });

@@ -16,21 +16,21 @@ module.exports = {
             callback(result);
         });
     },
-    deleteById: function (id, callback) {
-        pool.query(professionAttachSqlMap.deleteById, id, function (error, result) {
+    deleteByAttachId: function (attachId, callback) {
+        pool.query(professionAttachSqlMap.deleteById, attachId, function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
     },
     update: function (professionAttach, callback) {
         console.log(professionAttach)
-        pool.query(professionAttachSqlMap.update, [professionAttach.session, professionAttach.departmentKey, professionAttach.departmentName, professionAttach.professionKey, professionAttach.professionName, professionAttach.classKey, professionAttach.className, professionAttach.id], function (error, result) {
+        pool.query(professionAttachSqlMap.update, [professionAttach.session, professionAttach.departmentKey, professionAttach.departmentName, professionAttach.professionKey, professionAttach.professionName, professionAttach.classKey, professionAttach.className, professionAttach.attachId], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
     },
     getByKey: function (params,callback) {
-        pool.query(professionAttachSqlMap.getByKey, [params.session,params.session,params.departmentKey,params.departmentKey,params.professionKey,params.professionKey,params.classKey,params.classKey],function (error, result) {
+        pool.query(professionAttachSqlMap.getByKey, [params.session,params.session,params.departmentKey,params.departmentKey,params.professionKey,params.professionKey,params.classKey,params.classKey,(params.currPage - 1) * params.pageRowNum, params.pageRowNum * 1,params.session,params.session,params.departmentKey,params.departmentKey,params.professionKey,params.professionKey,params.classKey,params.classKey],function (error, result) {
             if (error) throw error;
             callback(result);
         });

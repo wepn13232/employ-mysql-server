@@ -5,7 +5,7 @@ var pool = mysql.createPool(mysqlConf.mysql);
 
 module.exports = {
     add: function (classParam, callback) {
-        pool.query(classSqlMap.add, [classParam.classNo,classParam.counselorNo,classParam.className,classParam.professionNo,classParam.professionName,classParam.classNum,classParam.employNum,classParam.monitor,classParam.monitorTel,classParam.counselorNo,classParam.counselorNo], function (error, result) {
+        pool.query(classSqlMap.add, [classParam.classNo,classParam.counselorNo,classParam.classNum,classParam.employNum,classParam.monitor,classParam.monitorTel,classParam.counselorNo], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
@@ -43,8 +43,8 @@ module.exports = {
         });
     },
     update: function (classParam, callback) {
-        console.log(classParam)
-        pool.query(classSqlMap.update, [classParam.classNo,classParam.counselorNo,classParam.className,classParam.professionNo,classParam.professionName,classParam.classNum,classParam.employNum,classParam.monitor,classParam.monitorTel,classParam.id], function (error, result) {
+        // console.log(classParam)
+        pool.query(classSqlMap.update, [classParam.classNo,classParam.counselorNo,classParam.classNum,classParam.monitor,classParam.monitorTel,classParam.id], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });
