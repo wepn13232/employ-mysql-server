@@ -5,9 +5,17 @@ var result = require('../model/result');
 
 /* list students */
 router.get('/', function (req, res) {
-    console.log('list students called');
-    studentDAO.list(function (students) {
-        res.json(result.createResult('get',true, students));
+    var pageObj = req.query;
+    console.log('list students called', pageObj);
+    studentDAO.list(pageObj, function (students) {
+        pageObj.totalRow = students[1][0].totalRow;
+        pageObj.currPage = pageObj.currPage * 1;
+        pageObj.pageRowNum = pageObj.pageRowNum * 1;
+        dataList = {
+            studentList: students[0],
+            pageObj
+        }
+        res.json(result.createResult('get', true, dataList));
         // console.log(res)
     });
 });
@@ -17,7 +25,7 @@ router.get('/getByStuNo/:stuNo', function (req, res) {
     var stuNo = req.params.stuNo;
     console.log('get student called, stuNo: ' + stuNo);
     studentDAO.getByStuNo(stuNo, function (student) {
-        res.json(result.createResult('get',true, student));
+        res.json(result.createResult('get', true, student));
     });
 });
 
@@ -27,7 +35,7 @@ router.delete('/:stuNo', function (req, res) {
     var stuNo = req.params.stuNo;
     console.log('delete student called, stuNo=' + stuNo);
     studentDAO.deleteByStuNo(stuNo, function (success) {
-        res.json(result.createResult('delete',success, null));
+        res.json(result.createResult('delete', success, null));
     });
 });
 
@@ -37,7 +45,7 @@ router.post('/', function (req, res) {
     var student = req.body;
     console.log(student);
     studentDAO.add(student, function (success) {
-        var r = result.createResult('post',success, null);
+        var r = result.createResult('post', success, null);
         res.json(r);
     });
 });
@@ -48,7 +56,7 @@ router.put('/updateByStuNo/:stuNo', function (req, res) {
     var student = req.body;
     student.stuNo = req.params.stuNo;
     studentDAO.update(student, function (success) {
-        var r = result.createResult('put',success, null);
+        var r = result.createResult('put', success, null);
         res.json(r);
     });
 });
@@ -67,7 +75,7 @@ router.patch('/:id', function (req, res) {
         }
         console.log(student);
         studentDAO.update(student, function (success) {
-            var r = result.createResult('patch',success, null);
+            var r = result.createResult('patch', success, null);
             res.json(r);
         });
     });
