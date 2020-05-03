@@ -69,10 +69,12 @@ router.post('/', function (req, res) {
 });
 /* post user by userId and password*/
 router.post('/login', function (req, res) {
-  var userId = req.body.userId;
-  var password = req.body.password;
-  console.log('post user called, userId: ' + userId);
-  userDao.login(userId, function (user) {
+  var user={};
+  var key = "ILOVEKUANGMINYI";
+  user.password = req.body.password;
+  user.userId = req.body.userId;
+  console.log('post user called, userId: ' + user.userId);
+  userDao.login(user, function (user) {
     if (user.length == 0) {
       res.json({
         status: '401',
@@ -80,9 +82,8 @@ router.post('/login', function (req, res) {
         data: []
       })
     } else {
-      var key = "ILOVEKUANGMINYI";
-      var save_password = aesDecrypt(user[0].password, key);
-      if (save_password == aesDecrypt(password, key)) {
+      
+      // if (save_password == aesDecrypt(password, key)) {
         delete user[0].password //删除密码
         res.json({
           status: '200',
@@ -90,7 +91,7 @@ router.post('/login', function (req, res) {
           data: user[0]
         });
 
-      }
+      // }
     }
   });
 });

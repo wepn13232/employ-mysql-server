@@ -31,10 +31,10 @@ router.get('/getByStuNo/:stuNo', function (req, res) {
 
 
 /* delete student */
-router.delete('/:stuNo', function (req, res) {
-    var stuNo = req.params.stuNo;
-    console.log('delete student called, stuNo=' + stuNo);
-    studentDAO.deleteByStuNo(stuNo, function (success) {
+router.delete('/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('delete student called, id=' + id);
+    studentDAO.deleteById(id, function (success) {
         res.json(result.createResult('delete', success, null));
     });
 });
