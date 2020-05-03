@@ -40,8 +40,8 @@ module.exports = {
             callback(result.affectedRows > 0);
         });
     },
-    login: function (adminId, callback) {
-        pool.query(adminSqlMap.login, adminId, function (error, result) {
+    login: function (admin, callback) {
+        pool.query(adminSqlMap.login, [admin.adminId,admin.password], function (error, result) {
             if (error) throw error;
             callback(result)
             // if (result.length === 0) {

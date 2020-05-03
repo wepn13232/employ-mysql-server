@@ -32,6 +32,8 @@ module.exports = {
     getByKey: function (params,callback) {
         pool.query(professionAttachSqlMap.getByKey, [params.session,params.session,params.departmentKey,params.departmentKey,params.professionKey,params.professionKey,params.classKey,params.classKey,(params.currPage - 1) * params.pageRowNum, params.pageRowNum * 1,params.session,params.session,params.departmentKey,params.departmentKey,params.professionKey,params.professionKey,params.classKey,params.classKey],function (error, result) {
             if (error) throw error;
+            console.log(result)
+            console.log("==========")
             callback(result);
         });
     },

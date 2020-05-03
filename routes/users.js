@@ -73,7 +73,7 @@ router.post('/login', function (req, res) {
   var key = "ILOVEKUANGMINYI";
   user.password = req.body.password;
   user.userId = req.body.userId;
-  console.log('post user called, userId: ' + user.userId);
+  // console.log('post user called, userId: ' + user.userId);
   userDao.login(user, function (user) {
     if (user.length == 0) {
       res.json({

@@ -61,10 +61,14 @@ router.post('/', function (req, res) {
 });
 /* post admin by adminId and password*/
 router.post('/login', function (req, res) {
-    var adminId = req.body.adminId;
-    var password = req.body.password;
-    console.log('post admin called, adminId: ' + adminId);
-    adminDao.login(adminId, function (admin) {
+    var admin = {};
+    var key = "ILOVEKUANGMINYI";
+    admin.password = req.body.password;
+    admin.adminId = req.body.adminId;
+    // var adminId = req.body.adminId;
+    // var password = req.body.password;
+    console.log('post admin called, adminId: ' + admin);
+    adminDao.login(admin, function (admin) {
         if (admin.length == 0) {
             res.json({
                 status: '401',
@@ -72,9 +76,9 @@ router.post('/login', function (req, res) {
                 data: []
             })
         } else {
-            var key = "ILOVEKUANGMINYI";
-            var save_password = aesDecrypt(admin[0].password, key);
-            if (save_password == aesDecrypt(password, key)) {
+            // var key = "ILOVEKUANGMINYI";
+            // var save_password = aesDecrypt(admin[0].password, key);
+            // if (save_password == aesDecrypt(password, key)) {
                 delete admin[0].password //删除密码
                 res.json({
                     status: '200',
@@ -82,7 +86,7 @@ router.post('/login', function (req, res) {
                     data: admin[0]
                 });
 
-            }
+            // }
         }
     });
 });

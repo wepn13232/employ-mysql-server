@@ -7,8 +7,16 @@ var result = require('../model/result');
 router.get('/', function (req, res) {
     console.log('list counselors called');
     counselorDAO.list(function (counselors) {
-        counselors[0].leadClass = counselors[0].leadClass.split(",");//逗号是分隔符
-        res.json(result.createResult('get',true, counselors));
+        if (counselors.length == 0) {
+            res.json({
+                status: '401',
+                message: '用户信息为空!',
+                data: []
+            })
+        } else {
+            counselors[0].leadClass = counselors[0].leadClass.split(","); //逗号是分隔符
+            res.json(result.createResult('get', true, counselors));
+        }
     });
 });
 
@@ -17,8 +25,20 @@ router.get('/getByCounselorNo/:counselorNo', function (req, res) {
     var counselorNo = req.params.counselorNo;
     console.log('get counselor called, counselorNo: ' + counselorNo);
     counselorDAO.getByCounselorNo(counselorNo, function (counselor) {
-        counselor.leadClass = counselor.leadClass.split(",");//逗号是分隔符
-        res.json(result.createResult('get',true, counselor));
+        console.log(counselor)
+        if (counselor.length == 0) {
+            res.json({
+                status: '401',
+                message: '用户信息不存在!',
+                data: []
+            })
+        } else {
+            counselor = counselor[0]
+            if (counselor.leadClass) {
+                counselor.leadClass = counselor.leadClass.split(","); //逗号是分隔符
+            }
+            res.json(result.createResult('get', true, counselor));
+        }
     });
 });
 
@@ -28,7 +48,7 @@ router.delete('/:counselorNo', function (req, res) {
     var counselorNo = req.params.counselorNo;
     console.log('delete counselor called, counselorNo=' + counselorNo);
     counselorDAO.deleteByCounselorNo(counselorNo, function (success) {
-        res.json(result.createResult('delete',success, null));
+        res.json(result.createResult('delete', success, null));
     });
 });
 
@@ -38,7 +58,7 @@ router.post('/', function (req, res) {
     var counselor = req.body;
     // console.log(counselor);
     counselorDAO.add(counselor, function (success) {
-        var r = result.createResult('post',success, null);
+        var r = result.createResult('post', success, null);
         res.json(r);
     });
 });
@@ -49,7 +69,8 @@ router.put('/updateCounselorInfoByCounselorNo/:counselorNo', function (req, res)
     var counselor = req.body;
     counselor.counselorNo = req.params.counselorNo;
     counselorDAO.update(counselor, function (success) {
-        var r = result.createResult('put',success, null);
+
+        var r = result.createResult('put', success, null);
         res.json(r);
     });
 });
@@ -68,7 +89,7 @@ router.patch('/:id', function (req, res) {
         }
         console.log(counselor);
         counselorDAO.update(counselor, function (success) {
-            var r = result.createResult('patch',success, null);
+            var r = result.createResult('patch', success, null);
             res.json(r);
         });
     });

@@ -3,7 +3,7 @@ var adminSqlMap = {
     deleteById: 'delete from adminInfo where id = ?',
     update: 'update adminInfo set adminName=?, password=? where id=?',
     list: 'select * from adminInfo',
-    getByadminId: 'select * from adminInfo where adminId = ?',
+    getByadminId: 'select * from adminInfo where adminId = ?and password=?',
     login: 'select * from adminInfo where adminId=?',
     updateImage:'update adminInfo set avatar=? where adminId=?',
 };
