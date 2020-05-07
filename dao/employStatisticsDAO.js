@@ -10,8 +10,8 @@ module.exports = {
             callback(result.affectedRows > 0);
         });
     },
-    list: function (callback) {
-        pool.query(employStatisticsSqlMap.list, function (error, result) {
+    list: function (employParams,callback) {
+        pool.query(employStatisticsSqlMap.list,[employParams.classNo,employParams.departmentKey], function (error, result) {
             if (error) throw error;
             callback(result);
         });

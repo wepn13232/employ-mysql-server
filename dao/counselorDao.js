@@ -5,7 +5,7 @@ var pool = mysql.createPool(mysqlConf.mysql);
 
 module.exports = {
     add: function (counselor, callback) {
-        pool.query(counselorSqlMap.add, [counselor.counselorNo,counselor.counselorName,counselor.counselorTel], function (error, result) {
+        pool.query(counselorSqlMap.add, [counselor.counselorNo,counselor.counselorName,counselor.counselorTel,counselor.departmentKey], function (error, result) {
             if (error) throw error;
             callback(result.affectedRows > 0);
         });

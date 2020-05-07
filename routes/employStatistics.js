@@ -5,8 +5,9 @@ var result = require('../model/result');
 
 /* list employStatistics */
 router.get('/', function (req, res) {
-    console.log('list employStatistics called');
-    employStatisticsDAO.list(function (employStatistics) {
+    employParams = req.query
+    console.log('list employStatistics called',employParams);
+    employStatisticsDAO.list(employParams,function (employStatistics) {
         res.json(result.createResult('get',true, employStatistics));
         // console.log(res)
     });
