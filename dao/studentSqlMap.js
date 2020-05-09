@@ -1,5 +1,5 @@
 var studentSqlMap = {
-    add: 'insert into studentInfo(stuNo,classNo,stuName,idCard,education,politicalStatus,biogenicLand,graduationTime,stuTel,familyContact,homeTel,homeAddress) values(?, ?,?, ?,?, ?,?, ?,?, ?,?, ?)',
+    add: 'insert into studentInfo(stuNo,classNo,stuName,stuSex,idCard,education,politicalStatus,biogenicLand,graduationTime,stuTel,familyContact,homeTel,homeAddress) values(?, ?,?,?, ?,?, ?,?, ?,?, ?,?, ?)',
     deleteById: 'delete from studentInfo where id = ?',
     update: 'update studentInfo set stuNo=?,classNo=?,stuName=?,stuSex=?,idCard=?,education=?,politicalStatus=?,biogenicLand=?,graduationTime=?,stuTel=?,familyContact=?,homeTel=?,homeAddress=? where stuNo =?',
     list: 'select * from studentInfo LIMIT ?, ?;SELECT COUNT(*) as totalRow from studentInfo;',

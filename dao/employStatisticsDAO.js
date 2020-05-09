@@ -11,7 +11,7 @@ module.exports = {
         });
     },
     list: function (employParams,callback) {
-        pool.query(employStatisticsSqlMap.list,[employParams.classNo,employParams.departmentKey], function (error, result) {
+        pool.query(employStatisticsSqlMap.list,[employParams.classNo,employParams.classNo,employParams.departmentKey,employParams.departmentKey], function (error, result) {
             if (error) throw error;
             callback(result);
         });

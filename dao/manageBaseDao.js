@@ -32,12 +32,13 @@ module.exports = {
         pool.query(manageBaseSqlMap.addEmployStatistics, [stuNo,stuNo,stuNo,stuNo], function (error, result) {
             if (error) throw error;
             else{
+                console.log("添加更新就业统计表成功")
             }
         });
         pool.query(manageBaseSqlMap.updateEmployNum, [stuNo,stuNo], function (error, result) {
             if (error) throw error;
             else{
-                console.log("更新班级就业数成功")
+                console.log("添加更新班级就业数成功")
             }
         });
     },

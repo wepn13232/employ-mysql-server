@@ -5,7 +5,10 @@ var result = require('../model/result');
 
 /* list employStatistics */
 router.get('/', function (req, res) {
-    employParams = req.query
+    employParams = {
+        classNo: req.query.classNo?req.query.classNo : null,
+        departmentKey: req.query.departmentKey?req.query.departmentKey : null,
+    }
     console.log('list employStatistics called',employParams);
     employStatisticsDAO.list(employParams,function (employStatistics) {
         res.json(result.createResult('get',true, employStatistics));
