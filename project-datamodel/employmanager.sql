@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50022
 File Encoding         : 65001
 
-Date: 2020-05-07 18:24:48
+Date: 2020-05-09 23:44:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,7 +89,7 @@ INSERT INTO `classinfo` VALUES ('5', '1615434', 'A2016', '53', '0', '林黛玉',
 INSERT INTO `classinfo` VALUES ('6', '1615491', 'A2016', '44', '0', '林东', '1213434546464');
 INSERT INTO `classinfo` VALUES ('7', '1615492', 'A2016', '46', '0', '林东哈', '13234345464');
 INSERT INTO `classinfo` VALUES ('9', '1715433', 'A2017', '54', '0', '哈哈', '13228276238');
-INSERT INTO `classinfo` VALUES ('10', '1915432', 'A2019', '45', '0', '琳达', '13225273947');
+INSERT INTO `classinfo` VALUES ('10', '1915432', 'A2019', '45', '2', '琳达', '13225273947');
 
 -- ----------------------------
 -- Table structure for counselorinfo
@@ -143,11 +143,14 @@ INSERT INTO `employinfo` VALUES ('6', '161543108', '广州明动软件股份有�
 INSERT INTO `employinfo` VALUES ('11', '161543301', '广州明动软件股份有限公司', 'B982934589824938379', '测试工程师', '4322', '2020-06-18 10:58:52', '广东省广州市天河区天源路', '李丽华', '020-2217652', '1');
 INSERT INTO `employinfo` VALUES ('12', '161543218', '明动软件股份有限公司', 'HBG89237828478', '前端开发工程师', '20000', '2020-04-29 00:00:00', '广东省广州市天河区天源路', '阿萨', '0202-2222', '1');
 INSERT INTO `employinfo` VALUES ('14', '161543201', '南云科技', '213456u', 'Java开发工程师', '2345', '2019-10-08 00:00:00', '132454', '第三方的规范', '2134546578', '1');
-INSERT INTO `employinfo` VALUES ('16', '161543207', '阿里股份有限责任有限公司', 'H898976623849353', 'Java开发工程师', '12345676', '2021-07-15 00:00:00', '123', 'qasdv', '123456789', '1');
+INSERT INTO `employinfo` VALUES ('16', '161543207', '阿里股份有限责任有限公司', 'H898976623849353', 'Java开发工程师', '12345676', '2020-05-16 00:00:00', '123', 'qasdv', '123456789', '1');
 INSERT INTO `employinfo` VALUES ('17', '161543217', '欢聚时代', 'HJ3273627478242', '前端开发工程师', '23232', '2020-04-30 00:00:00', '广东省广州市番禺区', '飒飒', '2345675', '1');
 INSERT INTO `employinfo` VALUES ('18', '161541101', '海河科技有限公司', '12121324232', '测试工程师', '12345', '2020-04-23 00:00:00', '广东省广州市', '嘿哈', '0220112930289', '1');
 INSERT INTO `employinfo` VALUES ('19', '161543319', '广东金融学院', 'Hg8394832948y29y912', '前端开发工程师', '50000', '2020-05-14 00:00:00', '广东金融学院', '咏荷美', '020-4384783', '1');
 INSERT INTO `employinfo` VALUES ('20', '161543307', '河海科技', 'sasu232i34u2938', '项目经理', '2343', '2020-05-07 00:00:00', '广东省广州市', '沙克', '020-2212232', '1');
+INSERT INTO `employinfo` VALUES ('21', '161543233', '广东省中央科技', 'UH8932823478274928', '开发总监工程师', '80000', '2020-02-11 00:00:00', '广东省天河区高普路', '丽华', '020-4837483', '1');
+INSERT INTO `employinfo` VALUES ('22', '191543218', '顶盛科技', 'H8394834739848290', '测试开发', '9000', '2022-06-09 00:00:00', '广东省湛江市', '何以', '020-3234378', '1');
+INSERT INTO `employinfo` VALUES ('23', '191543209', '哈哈哈哈', 'H239824', '测试总监', '80000', '2022-12-15 00:00:00', '广东省广州市天河区', '哈哈', '020-2039847', '1');
 
 -- ----------------------------
 -- Table structure for employrepresentinfo
@@ -203,11 +206,14 @@ INSERT INTO `employstatistics` VALUES ('14', '161543301', '1615433', '测试工�
 INSERT INTO `employstatistics` VALUES ('15', '161543108', '1615431', '后端开发工程师', '2020-01-08 09:46:50');
 INSERT INTO `employstatistics` VALUES ('16', '161543218', '1615432', '前端开发工程师', '2020-04-29 00:00:00');
 INSERT INTO `employstatistics` VALUES ('18', '161543201', '1615432', 'Java开发工程师', '2019-10-08 00:00:00');
-INSERT INTO `employstatistics` VALUES ('20', '161543207', '1615432', 'Java开发工程师', '2021-07-15 00:00:00');
-INSERT INTO `employstatistics` VALUES ('21', '161543217', ' 1615432', '前端开发工程师', '2020-04-30 00:00:00');
+INSERT INTO `employstatistics` VALUES ('20', '161543207', '1615432', 'Java开发工程师', '2020-05-16 00:00:00');
+INSERT INTO `employstatistics` VALUES ('21', '161543217', '1615432', '前端开发工程师', '2020-04-30 00:00:00');
 INSERT INTO `employstatistics` VALUES ('22', '161541101', '1615411', '测试工程师', '2020-04-23 00:00:00');
 INSERT INTO `employstatistics` VALUES ('23', '161543319', '1615433', '前端开发工程师', '2020-05-14 00:00:00');
 INSERT INTO `employstatistics` VALUES ('24', '161543307', '1615433', '项目经理', '2020-05-07 00:00:00');
+INSERT INTO `employstatistics` VALUES ('25', '161543233', '1615432', '开发总监工程师', '2020-02-11 00:00:00');
+INSERT INTO `employstatistics` VALUES ('26', '191543218', '1915432', '测试开发', '2022-06-09 00:00:00');
+INSERT INTO `employstatistics` VALUES ('27', '191543209', '1915432', '测试总监', '2022-12-15 00:00:00');
 
 -- ----------------------------
 -- Table structure for professionattach
@@ -316,6 +322,9 @@ INSERT INTO `studentinfo` VALUES ('18', '161543217', '1615432', '高志雄', '1'
 INSERT INTO `studentinfo` VALUES ('19', '161541101', '1615411', '栗海莉', '2', '440882199707243710', '1', '3', '广东省广州市', '2020-06-30 00:00:00', '13229451648', '栗展', '16528987265', '广东省广州市天河区');
 INSERT INTO `studentinfo` VALUES ('20', '161543319', '1615433', '赫利', '1', '440882199707243710', '1', '3', '广东省广州市', '2020-06-30 00:00:00', '13229451649', '15509287628', '020-99384934', '广东省广州市天河区');
 INSERT INTO `studentinfo` VALUES ('21', '161543307', '1615433', '何先生', '1', '823728746384732', '1', '1', '广东省河源市', '2020-06-30 00:00:00', '23456', '何玉', '1652827387382', '广东省河源市');
+INSERT INTO `studentinfo` VALUES ('22', '161543233', '1615432', '彭春考', '1', '440882199707243710', '1', '1', '广东省廉江市', '2020-06-30 00:00:00', '13229451649', '彭老', '15283728397', '广东省廉江市');
+INSERT INTO `studentinfo` VALUES ('23', '191543218', '1915432', '柯南', '1', '444088218827323', '1', '1', '广东省湛江市', '2023-07-03 00:00:00', '123328327874', '可以', '23243242', '广东省湛江市');
+INSERT INTO `studentinfo` VALUES ('24', '191543209', '1915432', '何玉', '2', '440882199707243710', '1', '1', '广东省广州市', '2022-12-22 00:00:00', '13229451649', '何欢', '020-2837284', '广东省广州市');
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -350,6 +359,7 @@ INSERT INTO `userinfo` VALUES ('161543233', '彭春考', '1', 'f8d4c93fa1297f109
 INSERT INTO `userinfo` VALUES ('161543301', '阿萨才行啊', '1', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2016', '14');
 INSERT INTO `userinfo` VALUES ('161543307', '何先生', '1', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2016', null);
 INSERT INTO `userinfo` VALUES ('161543319', '赫利', '1', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2016', null);
+INSERT INTO `userinfo` VALUES ('191543209', '何玉', '1', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2019', null);
 INSERT INTO `userinfo` VALUES ('191543218', '柯南', '1', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2019', null);
 INSERT INTO `userinfo` VALUES ('A2016', '陈兴', '2', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2016', '15');
 INSERT INTO `userinfo` VALUES ('A2017', '17辅导员', '2', 'f8d4c93fa1297f109aed991b8b22cdf5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1811580024,2009798947&fm=26&gp=0.jpg', '2017', null);
