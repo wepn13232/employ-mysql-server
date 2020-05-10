@@ -10,8 +10,8 @@ module.exports = {
             callback(result.affectedRows > 0);
         });
     },
-    list: function (callback) {
-        pool.query(employSqlMap.list, function (error, result) {
+    list: function (pageObj,callback) {
+        pool.query(employSqlMap.list, [(pageObj.currPage - 1) * pageObj.pageRowNum, pageObj.pageRowNum * 1], function (error, result) {
             if (error) throw error;
             callback(result);
         });

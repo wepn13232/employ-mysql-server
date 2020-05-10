@@ -6,9 +6,17 @@ var result = require('../model/result');
 
 /* list employ */
 router.get('/', function (req, res) {
-    console.log('list employ called');
-    employDAO.list(function (employ) {
-        res.json(result.createResult('get',true, employ));
+    var pageObj = req.query;
+    console.log('list employ called', pageObj);
+    employDAO.list(pageObj,function (employ) {
+        pageObj.totalRow = employ[1][0].totalRow;
+        pageObj.currPage = pageObj.currPage * 1;
+        pageObj.pageRowNum = pageObj.pageRowNum * 1;
+        dataList = {
+            employList: employ[0],
+            pageObj
+        }
+        res.json(result.createResult('get',true, dataList));
         // console.log(res)
     });
 });
