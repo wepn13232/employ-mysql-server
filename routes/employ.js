@@ -30,6 +30,13 @@ router.get('/getByStuNo/:stuNo', function (req, res) {
     });
 });
 
+router.get('/getByClassNo/:classNo', function (req, res) {
+    var classNo = req.params.classNo;
+    console.log('get employ called, classNo: ' + classNo);
+    employDAO.getByClassNo(classNo, function (employ) {
+        res.json(result.createResult('get',true, employ));
+    });
+});
 
 /* delete employ */
 router.delete('/:stuNo', function (req, res) {

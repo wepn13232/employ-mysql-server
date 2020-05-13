@@ -44,7 +44,7 @@ www -> app.js -> users.js ->  userDAO.js -> mysqlConf.js & userSqlMap.js
 - express
 
 前端技术
-- angular.js
+- vue.js
 
 ## 环境搭建
 
@@ -56,7 +56,7 @@ www -> app.js -> users.js ->  userDAO.js -> mysqlConf.js & userSqlMap.js
 1. 下载代码并部署
 
 ```
-git clone https://github.com/codethereforam/express-mysql-demo.git
+git clone https://github.com/Howe94/employ-mysql-server.git
 cd express-mysql-demo && npm install   #安装部署依赖的包
 ```
 
@@ -79,7 +79,7 @@ npm start
 - [理解RESTful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
 - [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 
-我使用的IDE是IDEA，安装"NodeJS"插件后依次点击
+IDEA，安装"NodeJS"插件后依次点击
 
 ```
 File -> New Project -> Node.js and NPM -> Node.js Express App
@@ -154,7 +154,7 @@ exports.createResult = function(success, data) {
 };
 ```
 
-我这里使用了工厂方法创建结果对象，对象有两个属性，success代表用户操作成功或失败，data存放后台要返回的数据。
+这里使用了工厂方法创建结果对象，对象有两个属性，success代表用户操作成功或失败，data存放后台要返回的数据。
 
 下面分析修改用户部分信息的相关代码，全部的增删改查代码请将项目clone下来查看。
 

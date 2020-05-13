@@ -23,6 +23,13 @@ module.exports = {
             callback(result[0]);
         });
     },
+    getByClassNo: function (classNo, callback) {
+        pool.query(employSqlMap.getByClassNo, classNo, function (error, result) {
+            if (error) throw error;
+            console.log(result);
+            callback(result);
+        });
+    },
     deleteById: function (id, callback) {
         pool.query(employSqlMap.deleteById, id, function (error, result) {
             if (error) throw error;
